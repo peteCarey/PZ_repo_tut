@@ -42,7 +42,7 @@ function myFunction(id) {
     var regYear;
     var chosenMth;
     var chosenYear;
-    alert("id is " + id);
+    console.log("id is " + id);
     var inputElement = document.getElementById(id);
     console.log(inputElement.id);
     console.log(inputElement.value);
@@ -50,10 +50,24 @@ function myFunction(id) {
         // RegistrationDate = parseInt(inputElement.value);
         //console.log("reg date is " + RegistrationDate);
         //dates.push(RegistrationDate);
-        var regnMonth = inputElement.value.substr(0, 2);
-        console.log("regnMonth is " + regnMonth);
+        var RegnMonth = inputElement.value.substr(0, 2);
+        regMth = parseInt(RegnMonth);
+        console.log("reg Month is " + regMth);
         var regnYear = inputElement.value.slice(2, 6);
         console.log("regnYear is " + regnYear);
+        var regYear_1 = parseInt(regnYear);
+    }
+    if (inputElement.id == "chosenDate") {
+        // RegistrationDate = parseInt(inputElement.value);
+        //console.log("reg date is " + RegistrationDate);
+        //dates.push(RegistrationDate);
+        var chosenDate = inputElement.value.substr(0, 2);
+        var choseDte = void 0;
+        choseDte = parseInt(chosenDate);
+        console.log("chosen Date is " + choseDte);
+        var chosenYear_1 = inputElement.value.slice(2, 6);
+        var choseYr = parseInt(chosenYear_1);
+        console.log("chosen Year is " + choseYr);
     }
 }
 function splitText(value, index) {
