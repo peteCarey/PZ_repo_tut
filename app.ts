@@ -100,14 +100,19 @@ function myFunction(id) {
     chosenYear = parseInt(choseYr);
     console.log("chosen Year is " + chosenYear);
   }
+
+  //let inputElement = <HTMLInputElement>document.getElementById(id);
   duration_months = chosenMonth - regnMonth;
   //duration_months = parseInt(durMonths);
   console.log("duration_months is " + duration_months);
   if (inputElement.id == "duration") {
-    inputElement.value = String(duration_months);
+    /*<HTMLInputElement>document.getElementById(id).value = duration_months;
+    let inputValue = (<HTMLInputElement>document.getElementById("duration")).value;
+    */
+    let total_dur = String(duration_months);
+    inputElement.value = total_dur;
   }
 }
-
 function splitText(value, index) {
   if (value.length < index) {
     return value;
