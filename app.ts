@@ -64,10 +64,15 @@ console.log(jaguar.getAnnualMileage());
 
 function myFunction(id) {
   //let dates = [];
-  let regMth: number;
-  let regYear: number;
-  let chosenMth: number;
+  let regMth: string;
+  let regnMonth: number;
+  let regYr: string;
+  let regnYear: number;
+  let choseMth: string;
+  let chosenMonth: number;
+  let choseYr: string;
   let chosenYear: number;
+  let duration_months: number;
   console.log("id is " + id);
   let inputElement = <HTMLInputElement>document.getElementById(id);
   console.log(inputElement.id);
@@ -76,25 +81,30 @@ function myFunction(id) {
     // RegistrationDate = parseInt(inputElement.value);
     //console.log("reg date is " + RegistrationDate);
     //dates.push(RegistrationDate);
-    let RegnMonth = inputElement.value.substr(0, 2);
-    regMth = parseInt(RegnMonth);
-    console.log("reg Month is " + regMth);
-    let regnYear = inputElement.value.slice(2, 6);
+    regMth = inputElement.value.substr(0, 2);
+    regnMonth = parseInt(regMth);
+    console.log("reg Month is " + regnMonth);
+    regYr = inputElement.value.slice(2, 6);
+    regnYear = parseInt(regYr);
     console.log("regnYear is " + regnYear);
-    let regYear = parseInt(regnYear);
   }
   if (inputElement.id == "chosenDate") {
     // RegistrationDate = parseInt(inputElement.value);
     //console.log("reg date is " + RegistrationDate);
     //dates.push(RegistrationDate);
-    let chosenDate = inputElement.value.substr(0, 2);
-    let choseDte: number;
-    choseDte = parseInt(chosenDate);
-    console.log("chosen Date is " + choseDte);
-    let chosenYear = inputElement.value.slice(2, 6);
+    choseMth = inputElement.value.substr(0, 2);
+    chosenMonth = parseInt(choseMth);
+    console.log("chosen Month is " + chosenMonth);
 
-    let choseYr = parseInt(chosenYear);
-    console.log("chosen Year is " + choseYr);
+    choseYr = inputElement.value.slice(2, 6);
+    chosenYear = parseInt(choseYr);
+    console.log("chosen Year is " + chosenYear);
+  }
+  duration_months = chosenMonth - regnMonth;
+  //duration_months = parseInt(durMonths);
+  console.log("duration_months is " + duration_months);
+  if (inputElement.id == "duration") {
+    inputElement.value = String(duration_months);
   }
 }
 

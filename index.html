@@ -27,7 +27,12 @@
         /><br /><br />
         <label for="lname">Duration (Years/Months):</label><br />
         <input type="text" id="duration" name="duration" value="" /><br /><br />
-        <input type="submit" value="Submit" />
+        <input
+          type="button"
+          id="btnSum"
+          value="Calculate duration"
+          onClick="calculateDuration('chosenDate','regnDate')"
+        />
       </form>
     </div>
     <script type="text/javascript" src="app.js"></script>
