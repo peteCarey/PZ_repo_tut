@@ -51,11 +51,14 @@ function myFunction(id) {
     var inputElement = document.getElementById(id);
     console.log(inputElement.id);
     console.log(inputElement.value);
+    debugger;
     if (inputElement.id == "regnDate") {
+        debugger;
         // RegistrationDate = parseInt(inputElement.value);
         //console.log("reg date is " + RegistrationDate);
         //dates.push(RegistrationDate);
         regMth = inputElement.value.substr(0, 2);
+        console.log("regMth is " + regMth);
         regnMonth = parseInt(regMth);
         console.log("reg Month is " + regnMonth);
         regYr = inputElement.value.slice(2, 6);
@@ -67,6 +70,7 @@ function myFunction(id) {
         //console.log("reg date is " + RegistrationDate);
         //dates.push(RegistrationDate);
         choseMth = inputElement.value.substr(0, 2);
+        console.log("choseMth is " + choseMth);
         chosenMonth = parseInt(choseMth);
         console.log("chosen Month is " + chosenMonth);
         choseYr = inputElement.value.slice(2, 6);
@@ -74,6 +78,8 @@ function myFunction(id) {
         console.log("chosen Year is " + chosenYear);
     }
     //let inputElement = <HTMLInputElement>document.getElementById(id);
+    console.info("chosenMonth is " + chosenMonth);
+    console.info("regnMonth is " + regnMonth);
     duration_months = chosenMonth - regnMonth;
     //duration_months = parseInt(durMonths);
     console.log("duration_months is " + duration_months);
@@ -82,7 +88,9 @@ function myFunction(id) {
         let inputValue = (<HTMLInputElement>document.getElementById("duration")).value;
         */
         var total_dur = String(duration_months);
+        console.log("total_dur is " + total_dur);
         inputElement.value = total_dur;
+        console.info(typeof inputElement.value);
     }
 }
 function splitText(value, index) {
