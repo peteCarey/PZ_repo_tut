@@ -36,63 +36,99 @@ var jaguar = {
 console.log(jaguar.vrm);
 console.log(jaguar.model);
 console.log(jaguar.getAnnualMileage());
-function myFunction(id) {
-    //let dates = [];
+function subtract() {
+    var a, b, c;
     var regMth;
-    var regnMonth;
-    var regYr;
-    var regnYear;
     var choseMth;
-    var chosenMonth;
+    var durMonths;
+    var durYears;
+    var regYr;
     var choseYr;
-    var chosenYear;
-    var duration_months;
-    console.log("id is " + id);
-    var inputElement = document.getElementById(id);
-    console.log(inputElement.id);
-    console.log(inputElement.value);
-    debugger;
-    if (inputElement.id == "regnDate") {
-        debugger;
-        // RegistrationDate = parseInt(inputElement.value);
-        //console.log("reg date is " + RegistrationDate);
-        //dates.push(RegistrationDate);
-        regMth = inputElement.value.substr(0, 2);
-        console.log("regMth is " + regMth);
-        regnMonth = parseInt(regMth);
-        console.log("reg Month is " + regnMonth);
-        regYr = inputElement.value.slice(2, 6);
-        regnYear = parseInt(regYr);
-        console.log("regnYear is " + regnYear);
-    }
-    if (inputElement.id == "chosenDate") {
-        // RegistrationDate = parseInt(inputElement.value);
-        //console.log("reg date is " + RegistrationDate);
-        //dates.push(RegistrationDate);
-        choseMth = inputElement.value.substr(0, 2);
-        console.log("choseMth is " + choseMth);
-        chosenMonth = parseInt(choseMth);
-        console.log("chosen Month is " + chosenMonth);
-        choseYr = inputElement.value.slice(2, 6);
-        chosenYear = parseInt(choseYr);
-        console.log("chosen Year is " + chosenYear);
-    }
-    //let inputElement = <HTMLInputElement>document.getElementById(id);
-    console.info("chosenMonth is " + chosenMonth);
-    console.info("regnMonth is " + regnMonth);
-    duration_months = chosenMonth - regnMonth;
-    //duration_months = parseInt(durMonths);
-    console.log("duration_months is " + duration_months);
-    if (inputElement.id == "duration") {
-        /*<HTMLInputElement>document.getElementById(id).value = duration_months;
-        let inputValue = (<HTMLInputElement>document.getElementById("duration")).value;
-        */
-        var total_dur = String(duration_months);
-        console.log("total_dur is " + total_dur);
-        inputElement.value = total_dur;
-        console.info(typeof inputElement.value);
-    }
+    /*  regMth = inputElement.value.substr(0, 2);
+      console.log("regMth is " + regMth);
+      regnMonth = parseInt(regMth);
+      console.log("reg Month is " + regnMonth);
+      regYr = inputElement.value.slice(2, 6);
+      regnYear = parseInt(regYr);
+      console.log("regnYear is " + regnYear);*/
+    a = String(document.getElementById("regnDate").value);
+    regMth = a.substr(0, 2);
+    console.info("regMth is " + regMth);
+    regYr = a.slice(2, 6);
+    console.info("regYr is " + regYr);
+    b = String(document.getElementById("chosenDate").value);
+    choseMth = b.substr(0, 2);
+    console.log("choseMth is " + choseMth);
+    choseYr = b.slice(2, 6);
+    // chosenYear = parseInt(choseYr);
+    console.log("choseYr is " + choseYr);
+    c = b - a;
+    console.log("c is " + c);
+    //(<HTMLInputElement>document.getElementById("duration")).value = c;
+    durMonths = choseMth - regMth;
+    // chosenMonth = parseInt(choseMth);
+    console.log("durMonths is " + durMonths);
+    durYears = choseYr - regYr;
+    console.log("durYears is " + durYears);
+    document.getElementById("duration").value =
+        durYears + " years and " + durMonths + " months";
 }
+function myFunction(id) {
+    alert("test");
+}
+/*
+function myFunction(id) {
+  //let dates = [];
+  let regMth: string;
+  let regnMonth: number;
+  let regYr: string;
+  let regnYear: number;
+  let choseMth: string;
+  let chosenMonth: number;
+  let choseYr: string;
+  let chosenYear: number;
+  let duration_months: number;
+  console.log("id is " + id);
+  let inputElement = <HTMLInputElement>document.getElementById(id);
+  console.log(inputElement.id);
+  console.log(inputElement.value);
+ 
+  if (inputElement.id == "regnDate") {
+    regMth = inputElement.value.substr(0, 2);
+    console.log("regMth is " + regMth);
+    regnMonth = parseInt(regMth);
+    console.log("reg Month is " + regnMonth);
+    regYr = inputElement.value.slice(2, 6);
+    regnYear = parseInt(regYr);
+    console.log("regnYear is " + regnYear);
+  }
+  if (inputElement.id == "chosenDate") {
+    
+    choseMth = inputElement.value.substr(0, 2);
+    console.log("choseMth is " + choseMth);
+    chosenMonth = parseInt(choseMth);
+    console.log("chosen Month is " + chosenMonth);
+
+    choseYr = inputElement.value.slice(2, 6);
+    chosenYear = parseInt(choseYr);
+    console.log("chosen Year is " + chosenYear);
+  }
+
+  //let inputElement = <HTMLInputElement>document.getElementById(id);
+  console.info("chosenMonth is " + chosenMonth);
+  console.info("regnMonth is " + regnMonth);
+  duration_months = chosenMonth - regnMonth;
+  //duration_months = parseInt(durMonths);
+  console.log("duration_months is " + duration_months);
+  if (inputElement.id == "duration") {
+   
+    let total_dur = String(duration_months);
+    console.log("total_dur is " + total_dur);
+    inputElement.value = total_dur;
+    console.info(typeof inputElement.value);
+  }
+}
+*/
 function splitText(value, index) {
     if (value.length < index) {
         return value;
