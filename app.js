@@ -24,36 +24,37 @@ var jaguar = {
 console.log(jaguar.vrm);
 console.log(jaguar.model);
 console.log(jaguar.getAnnualMileage());
-function subtract() {
-    var a, b, c;
-    var regMth;
-    var choseMth;
-    var durMonths;
-    var durYears;
-    var regYr;
-    var choseYr;
-    var totalDurMonths;
-    var totalDurYears;
-    var remainderDurMths;
-    a = String(document.getElementById("regnDate").value);
-    regMth = a.substr(0, 2);
-    console.info("regMth is " + regMth);
-    regYr = a.slice(2, 6);
-    console.info("regYr is " + regYr);
-    b = String(document.getElementById("chosenDate").value);
-    choseMth = b.substr(0, 2);
-    console.log("choseMth is " + choseMth);
-    choseYr = b.slice(2, 6);
-    // chosenYear = parseInt(choseYr);
-    console.log("choseYr is " + choseYr);
-    c = b - a;
-    console.log("c is " + c);
-    //(<HTMLInputElement>document.getElementById("duration")).value = c;
-    durMonths = choseMth - regMth;
-    // chosenMonth = parseInt(choseMth);
-    console.log("durMonths is " + durMonths);
+function subtract(olderDate, moreRecentDate, whereTo) {
+    console.log("olderDate is " + olderDate);
+    console.log(moreRecentDate);
+    console.log("whereTo is " + whereTo);
     debugger;
-    durYears = choseYr - regYr;
+    var a, b, c;
+    var olderMth = 0;
+    var olderYr = 0;
+    var moreRecentMth = 0;
+    var moreRecentYr = 0;
+    var durMonths = 0;
+    var durYears = 0;
+    var totalDurMonths = 0;
+    var totalDurYears = 0;
+    var remainderDurMths = 0;
+    a = 0;
+    b = 0;
+    c = 0;
+    a = String(document.getElementById(olderDate).value);
+    olderMth = a.substr(0, 2);
+    console.info("olderMth is " + olderMth);
+    olderYr = a.slice(2, 6);
+    console.info("olderYr is " + olderYr);
+    b = String(document.getElementById(moreRecentDate).value);
+    moreRecentMth = b.substr(0, 2);
+    console.log("(moreRecentMth is " + moreRecentMth);
+    moreRecentYr = b.slice(2, 6);
+    console.log("moreRecentYr is " + moreRecentYr);
+    durMonths = moreRecentMth - olderMth;
+    console.log("durMonths is " + durMonths);
+    durYears = moreRecentYr - olderYr;
     console.log("durYears is " + durYears);
     // convert to months
     totalDurMonths = durYears * 12;
@@ -66,14 +67,13 @@ function subtract() {
     if (remainderDurMths > 0) {
       totalDurYears = totalDurYears - 1;
     }
-    console.info("totalDurYears now is " + totalDurYears);
     */
     console.info("remainderDurMths " + remainderDurMths);
-    document.getElementById("duration").value =
+    document.getElementById(whereTo).value =
         totalDurYears + " years and " + remainderDurMths + " months";
 }
 function myFunction(id) {
-    alert("test");
+    console.log("test" + id);
 }
 function splitText(value, index) {
     if (value.length < index) {
@@ -81,16 +81,3 @@ function splitText(value, index) {
     }
     return [value.substring(0, index)].concat(splitText(value.substring(index), index));
 }
-//let nameValidationInput = document.getElementById("myForm.regnDate");
-/*
-function useValue() {
-  alert("test");
-  //  let NameValue = (<HTMLInputElement>document.getElementById("myForm.regnDate"))
-  //    .value;
-  // use it
-  /*  alert(NameValue);
-
-  // just to show the new value*/
-//}
-// nameValidationInput.onchange = useValue;
-// nameValidationInput.onblur = useValue;

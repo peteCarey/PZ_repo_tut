@@ -78,38 +78,25 @@
               type="text"
               id="regnDate"
               class="form-control"
-              value="MMYYYY"
-              onchange="myFunction(id)"
-            />
-          </div>
-          <div class="form-group col-md-3">
-            <label for="chosenDate">Chosen Date(MMYYYY):</label>
-            <input
-              type="text"
-              id="chosenDate"
-              class="form-control"
               value=""
               onchange="myFunction(id)"
             />
-          </div>
-          <div class="form-group col-md-6">
-            <label for="duration">Duration (Years/Months):</label>
-            <input type="text" id="duration"  class="form-control" value="" />
           </div>
         </div>
 
         <h3>Advertised for sale:</h3>
         <div class="form-row">
-          <div class="col">
+          <div class="form-group col-md-2">
             <label for="date_advertised">Date:</label>
             <input
               type="text"
               id="date_advertised"
               name="date_advertised"
               value=""
+              onchange="subtract('regnDate', 'date_advertised', 'duration')"
             />
           </div>
-          <div class="col">
+          <div class="form-group col-md-2">
             <label for="price_advertised">Price:</label>
             <input
               type="text"
@@ -118,7 +105,7 @@
               value=""
             />
           </div>
-          <div class="col">
+          <div class="form-group col-md-2">
             <label for="mileage_onAdvert">Mileage:</label>
             <input
               type="text"
@@ -127,49 +114,57 @@
               value=""
             />
           </div>
-          <div class="col">
+          <div class="form-group col-md-6">
             <label for="duration">Duration (Years/Months):</label>
-            <input type="text" id="duration" name="duration" value="" />
+            <input type="text" id="duration"  class="form-control" value="" />
           </div>
         </div>
+
         <h3>MOT test (roadworthy test):</h3>
         <div class="form-row">
-          <div class="col">
+          <div class="form-group col-md-2">
             <label for="mot_date">Date:</label>
-            <input type="text" id="mot_date" name="mot_date" value="" />
+            <input 
+              type="text" 
+              id="mot_date" 
+              name="mot_date" 
+              value="" 
+              onchange="subtract('date_advertised', 'mot_date', 'mot_duration')"/>
           </div>
-          <div class="col">
+          <div class="form-group col-md-2">
             <label for="mot_result">Result:</label>
             <input type="text" id="mot_result" name="mot_result" value="" />
           </div>
-          <div class="col">
+          <div class="form-group col-md-2">
             <label for="mot_mileage">Mileage:</label>
             <input type="text" id="mot_mileage" name="mot_mileage" value="" />
           </div>
-          <div class="col">
-            <label for="duration">Duration (Years/Months):</label>
-            <input type="text" id="duration" name="duration" value="" />
+          <div class="form-group col-md-6">
+            <label for="mot_duration">Duration (Years/Months):</label>
+            <input type="text" id="mot_duration" name="mot_duration" value="" />
           </div>
         </div> 
 
 
         <h3>Change of VRM:</h3>
         <div class="form-row">
-          <div class="col">
+          <div class="form-group col-md-2">
             <label for="vrm_change_date">Date:</label>
-            <input type="text" id="vrm_change_date" name="vrm_change_date" value="" />
+            <input type="text" id="vrm_change_date" name="vrm_change_date" value=""
+            onchange="subtract('mot_date', 'vrm_change_date', 'vrm_duration')"
+            /> 
           </div>
-          <div class="col">
+          <div class="form-group col-md-2">
             <label for="fromVRM">from VRM:</label>
             <input type="text" id="fromVRM" name="fromVRM" value="" />
           </div>
-          <div class="col">
+          <div class="form-group col-md-2">
             <label for="toVRM">to VRM:</label>
             <input type="text" id="toVRM" name="toVRM" value="" />
           </div>
-          <div class="col">
-            <label for="duration">Duration (Years/Months):</label>
-            <input type="text" id="duration" name="duration" value="" />
+          <div class="form-group col-md-6">
+            <label for="vrm_duration">Duration (Years/Months):</label>
+            <input type="text" id="vrm_duration" name="vrm_duration" value="" />
           </div>
         </div>
 
