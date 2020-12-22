@@ -112,11 +112,16 @@
               id="mileage_onAdvert"
               name="mileage_onAdvert"
               value=""
+              onchange="calculateMileage(this.value,'aveMileage')"
             />
           </div>
-          <div class="form-group col-md-6">
-            <label for="duration">Duration (Years/Months):</label>
-            <input type="text" id="duration"  class="form-control" value="" />
+          <div class="form-group col-md-3">
+            <label for="duration">Duration from Reg</label>
+            <input type="text" id="duration" class="form-control" value="" />
+          </div>
+          <div class="form-group col-md-3">
+            <label for="aveMileage">Average Mileage:</label>
+            <input type="text" id="aveMileage" class="form-control" value="" />
           </div>
         </div>
 
@@ -124,59 +129,99 @@
         <div class="form-row">
           <div class="form-group col-md-2">
             <label for="mot_date">Date:</label>
-            <input 
-              type="text" 
-              id="mot_date" 
-              name="mot_date" 
-              value="" 
-              onchange="subtract('date_advertised', 'mot_date', 'mot_duration')"/>
+            <input
+              type="text"
+              id="mot_date"
+              name="mot_date"
+              value=""
+              onchange="subtract('regnDate', 'mot_date', 'mot_duration')"
+            />
           </div>
           <div class="form-group col-md-2">
             <label for="mot_result">Result:</label>
             <input type="text" id="mot_result" name="mot_result" value="" />
           </div>
-          <div class="form-group col-md-2">
-            <label for="mot_mileage">Mileage:</label>
-            <input type="text" id="mot_mileage" name="mot_mileage" value="" />
+            <div class="form-group col-md-2">
+              <label for="mot_mileage">Mileage:</label>
+              <input
+                type="text"
+                id="mot_mileage"
+                name="mot_mileage"
+                value=""
+                onchange="calculateMileage(this.value,'mot_aveMileage')"
+              />
+            </div>
+            <div class="form-group col-md-3">
+              <label for="mot_duration">Duration from Reg</label>
+              <input
+                type="text"
+                id="mot_duration"
+                name="mot_duration"
+                value=""
+              />
+            </div>
+            <div class="form-group col-md-3">
+              <label for="mot_aveMileage">Average Mileage:</label>
+              <input
+                type="text"
+                id="mot_aveMileage"
+                class="form-control"
+                value=""
+              />
+            </div>
           </div>
+
+          <h3>Change of VRM:</h3>
+          <div class="form-row">
+            <div class="form-group col-md-2">
+              <label for="vrm_change_date">Date:</label>
+              <input
+                type="text"
+                id="vrm_change_date"
+                name="vrm_change_date"
+                value=""
+                onchange="subtract('regnDate', 'vrm_change_date', 'vrm_duration')"
+              />
+            </div>
+            <div class="form-group col-md-2">
+              <label for="fromVRM">from VRM:</label>
+              <input type="text" id="fromVRM" name="fromVRM" value="" />
+            </div>
+            <div class="form-group col-md-2">
+              <label for="toVRM">to VRM:</label>
+              <input type="text" id="toVRM" name="toVRM" value=""
+              onchange = "calculateDurationMonths('vrm_change_date', 'mot_date')" 
+              />
+            </div>
+            <div class="form-group col-md-3">
+              <label for="vrm_duration">Duration from Reg</label>
+              <input
+                type="text"
+                id="vrm_duration"
+                name="vrm_duration"
+                value=""
+              />
+            </div>
+            <div class="form-group col-md-3">
+              <label for="mot_aveMileage">Average Mileage:</label>
+              <input
+                type="text"
+                id="mot_aveMileage"
+                class="form-control"
+                value=""
+              />
+            </div>
+          </div>
+
           <div class="form-group col-md-6">
-            <label for="mot_duration">Duration (Years/Months):</label>
-            <input type="text" id="mot_duration" name="mot_duration" value="" />
+            <label for="average_mileage">Average Mileage:</label>
+            <input
+              type="text"
+              id="average_mileage"
+              name="average_mileage"
+              value=""
+            />
           </div>
-        </div> 
-
-
-        <h3>Change of VRM:</h3>
-        <div class="form-row">
-          <div class="form-group col-md-2">
-            <label for="vrm_change_date">Date:</label>
-            <input type="text" id="vrm_change_date" name="vrm_change_date" value=""
-            onchange="subtract('mot_date', 'vrm_change_date', 'vrm_duration')"
-            /> 
-          </div>
-          <div class="form-group col-md-2">
-            <label for="fromVRM">from VRM:</label>
-            <input type="text" id="fromVRM" name="fromVRM" value="" />
-          </div>
-          <div class="form-group col-md-2">
-            <label for="toVRM">to VRM:</label>
-            <input type="text" id="toVRM" name="toVRM" value="" />
-          </div>
-          <div class="form-group col-md-6">
-            <label for="vrm_duration">Duration (Years/Months):</label>
-            <input type="text" id="vrm_duration" name="vrm_duration" value="" />
-          </div>
-        </div>
-
-        <div class="form-group col-md-6">
-          <label for="average_mileage">Average Mileage:</label>
-          <input
-            type="text"
-            id="average_mileage"
-            name="average_mileage"
-            value=""
-          />
-        </div>
 
           <input
             type="button"
