@@ -71,33 +71,34 @@
           </div>
         </div>
 
-        <div class="form-group col-md-6">
-          <label for="fname">Date of Registration(MMYYYY):</label>
-          <input
-            type="text"
-            id="regnDate"
-            name="regnDate"
-            value="MMYYYY"
-            onchange="myFunction(id)"
-          />
+        <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="fname">Date of Registration(MMYYYY):</label>
+            <input
+              type="text"
+              id="regnDate"
+              class="form-control"
+              value="MMYYYY"
+              onchange="myFunction(id)"
+            />
+          </div>
+          <div class="form-group col-md-3">
+            <label for="chosenDate">Chosen Date(MMYYYY):</label>
+            <input
+              type="text"
+              id="chosenDate"
+              class="form-control"
+              value=""
+              onchange="myFunction(id)"
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label for="duration">Duration (Years/Months):</label>
+            <input type="text" id="duration"  class="form-control" value="" />
+          </div>
         </div>
-        <div class="form-group col-md-6">
-          <label for="chosenDate">Chosen Date(MMYYYY):</label>
-          <input
-            type="text"
-            id="chosenDate"
-            name="chosenDate"
-            value=""
-            onchange="myFunction(id)"
-          />
-        </div>
-        <div class="form-group col-md-6">
-          <label for="duration">Duration (Years/Months):</label>
-          <input type="text" id="duration" name="duration" value="" />
-        </div>
+
         <h3>Advertised for sale:</h3>
-
-
         <div class="form-row">
           <div class="col">
             <label for="date_advertised">Date:</label>
@@ -126,6 +127,10 @@
               value=""
             />
           </div>
+          <div class="col">
+            <label for="duration">Duration (Years/Months):</label>
+            <input type="text" id="duration" name="duration" value="" />
+          </div>
         </div>
         <h3>MOT test (roadworthy test):</h3>
         <div class="form-row">
@@ -134,23 +139,49 @@
             <input type="text" id="mot_date" name="mot_date" value="" />
           </div>
           <div class="col">
+            <label for="mot_result">Result:</label>
+            <input type="text" id="mot_result" name="mot_result" value="" />
+          </div>
+          <div class="col">
             <label for="mot_mileage">Mileage:</label>
             <input type="text" id="mot_mileage" name="mot_mileage" value="" />
           </div>
           <div class="col">
-            <label for="mot_result">Result:</label>
-            <input type="text" id="mot_result" name="mot_result" value="" />
+            <label for="duration">Duration (Years/Months):</label>
+            <input type="text" id="duration" name="duration" value="" />
           </div>
         </div> 
-          <div class="form-group col-md-6">
-            <label for="average_mileage">Average Mileage:</label>
-            <input
-              type="text"
-              id="average_mileage"
-              name="average_mileage"
-              value=""
-            />
+
+
+        <h3>Change of VRM:</h3>
+        <div class="form-row">
+          <div class="col">
+            <label for="vrm_change_date">Date:</label>
+            <input type="text" id="vrm_change_date" name="vrm_change_date" value="" />
           </div>
+          <div class="col">
+            <label for="fromVRM">from VRM:</label>
+            <input type="text" id="fromVRM" name="fromVRM" value="" />
+          </div>
+          <div class="col">
+            <label for="toVRM">to VRM:</label>
+            <input type="text" id="toVRM" name="toVRM" value="" />
+          </div>
+          <div class="col">
+            <label for="duration">Duration (Years/Months):</label>
+            <input type="text" id="duration" name="duration" value="" />
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <label for="average_mileage">Average Mileage:</label>
+          <input
+            type="text"
+            id="average_mileage"
+            name="average_mileage"
+            value=""
+          />
+        </div>
 
           <input
             type="button"
