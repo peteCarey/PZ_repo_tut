@@ -71,7 +71,6 @@ function subtract(olderDate, moreRecentDate, whereTo) {
   console.log("olderDate is " + olderDate);
   console.log(moreRecentDate);
   console.log("whereTo is " + whereTo);
-  debugger;
 
   a = 0;
   b = 0;
@@ -121,7 +120,6 @@ function subtract(olderDate, moreRecentDate, whereTo) {
 }
 
 function calculateMileage(mileage, whereTo) {
-  debugger;
   console.log("mileage is " + mileage);
   console.log("totalDurMonths is " + totalDurMonths);
 
@@ -132,10 +130,12 @@ function calculateMileage(mileage, whereTo) {
   );
 }
 
-function calculateDurationMonths(moreRecentDate, olderDate) {
+function calculateDurationMonths(moreRecentDate, olderDate, whereTo) {
   noMileageProvidedCalc = 0;
   mot_mileage = 0;
   approx_mileage = 0;
+  averageMileage = 0;
+
   a = String((<HTMLInputElement>document.getElementById(olderDate)).value);
   olderMth = a.substr(0, 2);
   console.info("olderMth is " + olderMth);
@@ -164,16 +164,9 @@ function calculateDurationMonths(moreRecentDate, olderDate) {
   );
   console.log("mot_mileage is " + mot_mileage);
   approx_mileage = noMileageProvidedCalc + mot_mileage;
-}
-function myFunction(id) {
-  console.log("test" + id);
-}
-
-function splitText(value, index) {
-  if (value.length < index) {
-    return value;
-  }
-  return [value.substring(0, index)].concat(
-    splitText(value.substring(index), index)
+  averageMileage = Math.trunc(approx_mileage / totalDurMonths) * 12;
+  console.info("averageMileage" + averageMileage);
+  (<HTMLInputElement>document.getElementById(whereTo)).value = String(
+    averageMileage
   );
 }
