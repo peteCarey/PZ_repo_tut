@@ -35,7 +35,7 @@ let vehicle_ave_mileage: number;
 let previousKnownMileage: number;
 let mileageOnSale: number;
 
-function subtract(moreRecentDate, olderDate, whereTo) {
+function getDuration(moreRecentDate, olderDate, whereTo) {
   a = 0;
   b = 0;
   registrationDate = "";
@@ -89,7 +89,7 @@ function calculateTotalAverageMileage(whereTo) {
   mileageOnSale = Number(
     (<HTMLInputElement>document.getElementById("mileage_onAdvert")).value
   );
-  console.info("mot_mileage is " + mot_mileage);
+
   if (mot_mileage > 0) {
     // get duration period date of last mot until VRM changed
     olderDate = "mot_date";
@@ -125,14 +125,11 @@ function calculateTotalAverageMileage(whereTo) {
   totalDurYears = Math.trunc(totalDurMonths / 12);
 
   noMileageProvidedCalc = Math.trunc((totalDurMonths / 12) * 7900);
-  console.info("noMileageProvidedCalc is " + noMileageProvidedCalc);
   approx_mileage = noMileageProvidedCalc + previousKnownMileage; // gives total mileage for the vehicle
-  console.log("approx_mileage is " + approx_mileage);
+
   // need to divide by date of vrm change from date of registration
-  subtract("vrm_change_date", "regnDate", "vrm_duration"); // obtain totalDurMonths
-  console.log("totalDurMonths is " + totalDurMonths);
+  getDuration("vrm_change_date", "regnDate", "vrm_duration"); // obtain totalDurMonths
   vehicle_ave_mileage = (approx_mileage / totalDurMonths) * 12;
-  console.log("vehicle_ave_mileage is " + Math.trunc(vehicle_ave_mileage));
   (<HTMLInputElement>document.getElementById(whereTo)).value = String(
     Math.trunc(vehicle_ave_mileage)
   );
