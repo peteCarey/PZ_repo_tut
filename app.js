@@ -1,26 +1,6 @@
-// Import stylesheets
-// import "./style.css";
-var RegistrationDate; //092018
-RegistrationDate = 0;
-var jaguar = {
-    id: 1234,
-    vrm: "PK68ORO",
-    make: "Jaguar",
-    model: "xe",
-    // RegistrationDate: "30/09/2018",
-    getAnnualMileage: function () {
-        return 7800;
-    },
-    getCarAge: function () {
-        var chosenDate; //032021
-        var carAge;
-        var reg_months; // first 2 numbers
-        var reg_years; // last 4 numbers
-        var chosen_months;
-        var chosen_years;
-        // carAge = chosenDate - RegistrationDate;
-    },
-};
+var registrationDate;
+var regMths;
+var regYears;
 var a, b, c;
 var olderMth;
 var olderYr;
@@ -28,6 +8,9 @@ var moreRecentMth;
 var moreRecentYr;
 var durMonths;
 var durYears;
+var regDurMonths;
+var regDurYears;
+var totalRegMonthsToVRMchange;
 var totalDurYears;
 var remainderDurMths;
 var totalDurMonths;
@@ -36,16 +19,13 @@ var averageMileage;
 var noMileageProvidedCalc;
 var mot_mileage;
 var approx_mileage;
-console.log(jaguar.vrm);
-console.log(jaguar.model);
-console.log(jaguar.getAnnualMileage());
-function subtract(olderDate, moreRecentDate, whereTo) {
-    console.log("olderDate is " + olderDate);
-    console.log(moreRecentDate);
-    console.log("whereTo is " + whereTo);
+var vehicle_ave_mileage;
+var previousKnownMileage;
+var mileageOnSale;
+function subtract(moreRecentDate, olderDate, whereTo) {
     a = 0;
     b = 0;
-    c = 0;
+    registrationDate = "";
     olderMth = 0;
     olderYr = 0;
     moreRecentMth = 0;
@@ -55,75 +35,71 @@ function subtract(olderDate, moreRecentDate, whereTo) {
     totalDurYears = 0;
     remainderDurMths = 0;
     totalDurMonths = 0;
-    a = String(document.getElementById(olderDate).value);
-    olderMth = a.substr(0, 2);
-    console.info("olderMth is " + olderMth);
-    olderYr = a.slice(2, 6);
-    console.info("olderYr is " + olderYr);
-    b = String(document.getElementById(moreRecentDate).value);
-    moreRecentMth = b.substr(0, 2);
-    console.log("(moreRecentMth is " + moreRecentMth);
-    moreRecentYr = b.slice(2, 6);
-    console.log("moreRecentYr is " + moreRecentYr);
+    a = String(document.getElementById(moreRecentDate).value);
+    moreRecentMth = a.substr(0, 2);
+    moreRecentYr = a.slice(2, 6);
+    b = String(document.getElementById(olderDate).value);
+    olderMth = b.substr(0, 2);
+    olderYr = b.slice(2, 6);
     durMonths = moreRecentMth - olderMth;
-    console.log("durMonths is " + durMonths);
     durYears = moreRecentYr - olderYr;
-    console.log("durYears is " + durYears);
     // convert to months
     totalDurMonths = durYears * 12;
     totalDurMonths = totalDurMonths + durMonths;
-    console.info("totalDurMonths is " + totalDurMonths);
     totalDurYears = Math.trunc(totalDurMonths / 12);
-    console.info("totalDurYears " + totalDurYears);
     // find out remainder
     remainderDurMths = totalDurMonths % 12;
-    /*
-    if (remainderDurMths > 0) {
-      totalDurYears = totalDurYears - 1;
-    }
-    */
-    console.info("remainderDurMths " + remainderDurMths);
     document.getElementById(whereTo).value =
         totalDurYears + " years " + remainderDurMths + " months";
 }
 function calculateMileage(mileage, whereTo) {
-    console.log("mileage is " + mileage);
-    console.log("totalDurMonths is " + totalDurMonths);
     averageMileage = Math.trunc(mileage / totalDurMonths) * 12;
-    console.log("averageMileage is " + averageMileage);
     document.getElementById(whereTo).value = String(averageMileage);
 }
-function calculateDurationMonths(moreRecentDate, olderDate, whereTo) {
-    noMileageProvidedCalc = 0;
-    mot_mileage = 0;
-    approx_mileage = 0;
-    averageMileage = 0;
-    a = String(document.getElementById(olderDate).value);
-    olderMth = a.substr(0, 2);
-    console.info("olderMth is " + olderMth);
-    olderYr = a.slice(2, 6);
-    console.info("olderYr is " + olderYr);
-    b = String(document.getElementById(moreRecentDate).value);
-    moreRecentMth = b.substr(0, 2);
-    console.log("(moreRecentMth is " + moreRecentMth);
-    moreRecentYr = b.slice(2, 6);
-    console.log("moreRecentYr is " + moreRecentYr);
+function calculateTotalAverageMileage(whereTo) {
+    var olderDate;
+    var moreRecentDate;
+    vehicle_ave_mileage = 0;
+    mileageOnSale = 0;
+    mot_mileage = Number(document.getElementById("mot_mileage").value);
+    mileageOnSale = Number(document.getElementById("mileage_onAdvert").value);
+    console.info("mot_mileage is " + mot_mileage);
+    if (mot_mileage > 0) {
+        // get duration period date of last mot until VRM changed
+        olderDate = "mot_date";
+        moreRecentDate = "vrm_change_date";
+        previousKnownMileage = mot_mileage;
+    }
+    if (mot_mileage == 0) {
+        olderDate = "date_advertised";
+        moreRecentDate = "vrm_change_date";
+        previousKnownMileage = Number(document.getElementById("mileage_onAdvert").value);
+    }
+    if (mot_mileage == 0 && mileageOnSale == 0) {
+        olderDate = "regnDate";
+        moreRecentDate = "vrm_change_date";
+        previousKnownMileage = 0;
+    }
+    a = String(document.getElementById(moreRecentDate).value);
+    moreRecentMth = a.substr(0, 2);
+    moreRecentYr = a.slice(2, 6);
+    b = String(document.getElementById(olderDate).value);
+    olderMth = b.substr(0, 2);
+    olderYr = b.slice(2, 6);
     durMonths = moreRecentMth - olderMth;
-    console.log("durMonths is " + durMonths);
     durYears = moreRecentYr - olderYr;
-    console.log("durYears is " + durYears);
     // convert to months
     totalDurMonths = durYears * 12;
     totalDurMonths = totalDurMonths + durMonths;
-    console.info("totalDurMonths is " + totalDurMonths);
     totalDurYears = Math.trunc(totalDurMonths / 12);
-    console.info("totalDurYears " + totalDurYears);
     noMileageProvidedCalc = Math.trunc((totalDurMonths / 12) * 7900);
-    console.log("noMileageProvidedCalc is " + noMileageProvidedCalc);
-    mot_mileage = Number(document.getElementById("mot_mileage").value);
-    console.log("mot_mileage is " + mot_mileage);
-    approx_mileage = noMileageProvidedCalc + mot_mileage;
-    averageMileage = Math.trunc(approx_mileage / totalDurMonths) * 12;
-    console.info("averageMileage" + averageMileage);
-    document.getElementById(whereTo).value = String(averageMileage);
+    console.info("noMileageProvidedCalc is " + noMileageProvidedCalc);
+    approx_mileage = noMileageProvidedCalc + previousKnownMileage; // gives total mileage for the vehicle
+    console.log("approx_mileage is " + approx_mileage);
+    // need to divide by date of vrm change from date of registration
+    subtract("vrm_change_date", "regnDate", "vrm_duration"); // obtain totalDurMonths
+    console.log("totalDurMonths is " + totalDurMonths);
+    vehicle_ave_mileage = (approx_mileage / totalDurMonths) * 12;
+    console.log("vehicle_ave_mileage is " + Math.trunc(vehicle_ave_mileage));
+    document.getElementById(whereTo).value = String(Math.trunc(vehicle_ave_mileage));
 }
