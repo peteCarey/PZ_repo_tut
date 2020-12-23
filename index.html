@@ -182,17 +182,17 @@
                 onchange="subtract( 'vrm_change_date', 'regnDate', 'vrm_duration')"
               />
             </div>
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-3">
               <label for="fromVRM">from VRM:</label>
-              <input type="text" id="fromVRM" name="fromVRM" value="" />
-            </div>
-            <div class="form-group col-md-2">
-              <label for="toVRM">to VRM:</label>
-              <input type="text" id="toVRM" name="toVRM" value=""
-              onchange = "calculateTotalAverageMileage('vrn_aveMileage')"
-              />
+              <input type="text" id="fromVRM" name="fromVRM" value=""
+              onchange = "calculateTotalAverageMileage('vrn_aveMileage')" />
             </div>
             <div class="form-group col-md-3">
+              <label for="toVRM">to VRM:</label>
+              <input type="text" id="toVRM" name="toVRM" value=""
+              />
+            </div>
+            <div class="form-group col-md-4">
               <label for="vrm_duration">Duration from Reg</label>
               <input
                 type="text"
@@ -202,7 +202,7 @@
               />
             </div>
             
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-2">
               <label for="vrn_aveMileage">Average Mileage:</label>
               <input
                 type="text"
