@@ -10,7 +10,21 @@ export class CazanaFormComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-  model = new Cazana(18, 'Dr IQ', 'Ford', 'Focus');
+  model = new Cazana(
+    18,
+    'Dr IQ',
+    'Ford',
+    'Focus',
+    '',
+    '',
+    0,
+    0,
+    0,
+    0,
+    '',
+    '',
+    ''
+  );
   submitted = false;
 
   onSubmit() {
@@ -18,6 +32,20 @@ export class CazanaFormComponent implements OnInit {
   }
 
   newCazana() {
-    this.model = new Cazana(42, 'Bloggs', 'ford', 'focus');
+    this.model = new Cazana(
+      42,
+      'Bloggs',
+      'ford',
+      'focus',
+      '',
+      '',
+      0,
+      0,
+      0,
+      0,
+      '',
+      '',
+      ''
+    );
   }
 }

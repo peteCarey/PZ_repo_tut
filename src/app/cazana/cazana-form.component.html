@@ -1,55 +1,285 @@
 <p>cazana works!</p>
 <div class="container">
   <div [hidden]="submitted">
-    <h1>Vehicle Mileage Estimator</h1>
     <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+      <h1>Vehicle Mileage Estimator</h1>
       <div class="form-group">
-        <label for="id">ID</label>
-        <input
-          type="text"
-          class="form-control"
-          id="id"
-          required
-          [(ngModel)]="model.id"
-          name="id"
-          #name="ngModel"
-        />
-        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-          Id is required
+        <div class="col-xs-6">
+          <label for="id">ID</label>
+          <input
+            type="text"
+            class="form-control"
+            id="id"
+            required
+            [(ngModel)]="model.id"
+            name="id"
+            #name="ngModel"
+          />
+          <div
+            [hidden]="name.valid || name.pristine"
+            class="alert alert-danger"
+          >
+            Id is required
+          </div>
         </div>
       </div>
 
       <div class="form-group">
-        <label for="vrm">VRM</label>
-        <input
-          type="text"
-          class="form-control"
-          id="vrm"
-          [(ngModel)]="model.vrm"
-          name="VRM"
-        />
+        <div class="col-xs-6">
+          <label for="vrm">VRM</label>
+          <input
+            type="text"
+            class="form-control"
+            id="vrm"
+            [(ngModel)]="model.vrm"
+            name="VRM"
+          />
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="make">Make</label>
-        <input
-          type="text"
-          class="form-control"
-          id="make"
-          [(ngModel)]="model.make"
-          name="Make"
-        />
+        <div class="col-xs-3">
+          <label for="make">Make</label>
+          <input
+            type="text"
+            class="form-control"
+            id="make"
+            [(ngModel)]="model.make"
+            name="Make"
+          />
+        </div>
       </div>
 
       <div class="form-group">
-        <label for="model">Model</label>
-        <input
-          type="text"
-          class="form-control"
-          id="model"
-          [(ngModel)]="model.model"
-          name="Model"
-        />
+        <div class="col-xs-3">
+          <label for="model">Model</label>
+          <input
+            type="text"
+            class="form-control"
+            id="model"
+            [(ngModel)]="model.model"
+            name="Model"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-6">
+          <label for="registrationDate">Date of Registration (MMYYYY)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="model"
+            [(ngModel)]="model.registrationDate"
+            name="registrationDate"
+          />
+        </div>
+      </div>
+
+      <h2 class="smallLineHeight">Advertised for sale:</h2>
+      <div class="form-group">
+        <div class="col-xs-3">
+          <label for="dateAdvertised">Date(MMYYYY):</label>
+          <input
+            type="text"
+            class="form-control"
+            id="dateAdvertised"
+            [(ngModel)]="model.dateAdvertised"
+            name="dateAdvertised"
+            onchange="getDuration('dateAdvertised', 'regnDate',  'duration')"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-2">
+          <label for="price">Price:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="price"
+            [(ngModel)]="model.price"
+            name="price"
+            onchange="calculateMileage(this.value,'aveMileage')"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-2">
+          <label for="mileage">Mileage</label>
+          <input
+            type="text"
+            class="form-control"
+            id="mileage"
+            [(ngModel)]="model.mileage"
+            name="Mileage"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-3">
+          <label for="durationFromReg">Duration from Reg</label>
+          <input
+            type="text"
+            class="form-control"
+            id="durationFromReg"
+            [(ngModel)]="model.durationFromReg"
+            name="durationFromReg"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-2">
+          <label for="averageMileage">Average Mileage</label>
+          <input
+            type="text"
+            class="form-control"
+            id="averageMileage"
+            [(ngModel)]="model.averageMileage"
+            name="averageMileage"
+          />
+        </div>
+      </div>
+
+      <h2 class="smallLineHeight">MOT test (roadworthy test):</h2>
+
+      <div class="form-group">
+        <div class="col-xs-3">
+          <label for="dateAdvertised">Date(MMYYYY):</label>
+          <input
+            type="text"
+            class="form-control"
+            id="dateAdvertised"
+            [(ngModel)]="model.dateAdvertised"
+            name="dateAdvertised"
+            onchange="getDuration('dateAdvertised', 'regnDate',  'duration')"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-2">
+          <label for="result">Result:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="result"
+            [(ngModel)]="model.result"
+            name="result"
+            onchange="calculateMileage(this.value,'aveMileage')"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-2">
+          <label for="mileage">Mileage</label>
+          <input
+            type="text"
+            class="form-control"
+            id="mileage"
+            [(ngModel)]="model.mileage"
+            name="Mileage"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-3">
+          <label for="durationFromReg">Duration from Reg</label>
+          <input
+            type="text"
+            class="form-control"
+            id="durationFromReg"
+            [(ngModel)]="model.durationFromReg"
+            name="durationFromReg"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-2">
+          <label for="averageMileage">Average Mileage</label>
+          <input
+            type="text"
+            class="form-control"
+            id="averageMileage"
+            [(ngModel)]="model.averageMileage"
+            name="averageMileage"
+          />
+        </div>
+      </div>
+
+      <h2 class="smallLineHeight">Change of VRM:</h2>
+
+      <div class="form-group">
+        <div class="col-xs-3">
+          <label for="dateAdvertised">Date(MMYYYY):</label>
+          <input
+            type="text"
+            class="form-control"
+            id="dateAdvertised"
+            [(ngModel)]="model.dateAdvertised"
+            name="dateAdvertised"
+            onchange="getDuration('dateAdvertised', 'regnDate',  'duration')"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-2">
+          <label for="fromVRM">from VRM:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="fromVRM"
+            [(ngModel)]="model.fromVRM"
+            name="fromVRM"
+            onchange="calculateMileage(this.value,'aveMileage')"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-2">
+          <label for="toVRM">to VRM:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="toVRM"
+            [(ngModel)]="model.toVRM"
+            name="toVRM"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-2">
+          <label for="durationFromReg">Duration from Reg</label>
+          <input
+            type="text"
+            class="form-control"
+            id="durationFromReg"
+            [(ngModel)]="model.durationFromReg"
+            name="durationFromReg"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-2">
+          <label for="averageMileage">Average Mileage</label>
+          <input
+            type="text"
+            class="form-control"
+            id="averageMileage"
+            [(ngModel)]="model.averageMileage"
+            name="averageMileage"
+          />
+        </div>
       </div>
       <!--
       <div class="form-group">
@@ -72,31 +302,39 @@
         </div>
       </div>
     -->
-      <button type="submit" class="btn btn-success">Submit</button>
-      <button type="button" class="btn btn-default" (click)="newCazana()">
-        New Cazana
-      </button>
+      <div class="form-group col-xs-6">
+        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="button" class="btn btn-default" (click)="newCazana()">
+          New Cazana
+        </button>
+      </div>
     </form>
-  </div>
 
-  <div [hidden]="!submitted">
-    <h2>You submitted the following:</h2>
-    <div class="row">
-      <div class="col-xs-3">Id</div>
-      <div class="col-xs-9">{{ model.id }}</div>
-    </div>
-    <div class="row">
-      <div class="col-xs-3">VRM</div>
-      <div class="col-xs-9">{{ model.vrm }}</div>
-    </div>
-    <!--
+    <div [hidden]="!submitted">
+      <h2>You submitted the following:</h2>
+      <div class="row">
+        <div class="col-xs-3">Id</div>
+        <div class="col-xs-9">{{ model.id }}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3">VRM</div>
+        <div class="col-xs-9">{{ model.vrm }}</div>
+      </div>
+      <!--
     <div class="row">
       <div class="col-xs-3">Power</div>
       <div class="col-xs-9">{{ model.power }}</div>
     </div>-->
-    <br />
-    <button type="button" class="btn btn-primary" (click)="submitted = false">
-      Edit
-    </button>
+      <br />
+      <div class="form-group col-xs-6">
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="submitted = false"
+        >
+          Edit
+        </button>
+      </div>
+    </div>
   </div>
 </div>

@@ -46,3 +46,20 @@ button:disabled {
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+label {
+  padding-top: 2rem;
+}
+
+.form-group {
+  background-color: blue;
+}
+
+.form-control {
+  width: 50%;
+  background-color: pink;
+}
+
+.smallLineHeight {
+  line-height: 2.1;
+}
