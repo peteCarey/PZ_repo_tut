@@ -22,6 +22,9 @@ export class CazanaFormComponent implements OnInit {
     0,
     0,
     '',
+    'Fail',
+    0,
+    '',
     '',
     ''
   );
@@ -42,6 +45,9 @@ export class CazanaFormComponent implements OnInit {
       0,
       0,
       0,
+      0,
+      '',
+      'Fail',
       0,
       '',
       '',

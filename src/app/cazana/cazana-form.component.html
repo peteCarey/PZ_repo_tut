@@ -1,8 +1,9 @@
 <p>cazana works!</p>
 <div class="container">
   <div [hidden]="submitted">
-    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+    <form (ngSubmit)="onSubmit()" #cazanaForm="ngForm">
       <h1>Vehicle Mileage Estimator</h1>
+      {{ model | json }}
       <div class="form-group">
         <div class="col-xs-6">
           <label for="id">ID</label>
@@ -34,6 +35,7 @@
             [(ngModel)]="model.vrm"
             name="VRM"
           />
+          TODO: remove this: {{ model.vrm }}
         </div>
       </div>
 
@@ -111,9 +113,9 @@
           <input
             type="text"
             class="form-control"
-            id="mileage"
-            [(ngModel)]="model.mileage"
-            name="Mileage"
+            id="mileageAdvertised"
+            [(ngModel)]="model.mileageAdvertised"
+            name="mileageAdvertised"
           />
         </div>
       </div>
@@ -148,14 +150,14 @@
 
       <div class="form-group">
         <div class="col-xs-3">
-          <label for="dateAdvertised">Date(MMYYYY):</label>
+          <label for="dateOfMot">Date(MMYYYY):</label>
           <input
             type="text"
             class="form-control"
-            id="dateAdvertised"
-            [(ngModel)]="model.dateAdvertised"
-            name="dateAdvertised"
-            onchange="getDuration('dateAdvertised', 'regnDate',  'duration')"
+            id="dateOfMot"
+            [(ngModel)]="model.dateOfMot"
+            name="dateOfMot"
+            onchange="getDuration('dateOfMot', 'regnDate',  'duration')"
           />
         </div>
       </div>
@@ -180,9 +182,9 @@
           <input
             type="text"
             class="form-control"
-            id="mileage"
-            [(ngModel)]="model.mileage"
-            name="Mileage"
+            id="mileageMot"
+            [(ngModel)]="model.mileageMot"
+            name="mileageMot"
           />
         </div>
       </div>
@@ -217,14 +219,14 @@
 
       <div class="form-group">
         <div class="col-xs-3">
-          <label for="dateAdvertised">Date(MMYYYY):</label>
+          <label for="dateOfChange">Date(MMYYYY):</label>
           <input
             type="text"
             class="form-control"
             id="dateAdvertised"
-            [(ngModel)]="model.dateAdvertised"
-            name="dateAdvertised"
-            onchange="getDuration('dateAdvertised', 'regnDate',  'duration')"
+            [(ngModel)]="model.dateOfChange"
+            name="dateOfChange"
+            onchange="getDuration('dateOfChange', 'regnDate',  'duration')"
           />
         </div>
       </div>
@@ -235,9 +237,9 @@
           <input
             type="text"
             class="form-control"
-            id="fromVRM"
-            [(ngModel)]="model.fromVRM"
-            name="fromVRM"
+            id="vrm"
+            [(ngModel)]="model.vrm"
+            name="vrm"
             onchange="calculateMileage(this.value,'aveMileage')"
           />
         </div>
