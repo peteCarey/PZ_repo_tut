@@ -226,7 +226,7 @@
       <h2 class="smallLineHeight">Change of VRM:</h2>
 
       <div class="form-group">
-        <div class="col-xs-3">
+        <div class="col-xs-2">
           <label for="dateOfChange">Date(MMYYYY):</label>
           <input
             type="text"
@@ -261,6 +261,20 @@
             id="toVRM"
             [(ngModel)]="model.toVRM"
             name="toVRM"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-xs-2">
+          <label for="mileage">Mileage</label>
+          <input
+            type="text"
+            class="form-control"
+            id="mileageVrm"
+            [(ngModel)]="model.mileageVrm"
+            name="mileageVrm"
+            (onchange)="calculateMileage()"
           />
         </div>
       </div>

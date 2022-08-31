@@ -12,7 +12,7 @@ export class CazanaFormComponent implements OnInit {
   ngOnInit(): void {}
   model = new Cazana(
     18,
-    'Dr IQ',
+    '123456789',
     'Ford',
     'Focus',
     '',
@@ -23,7 +23,6 @@ export class CazanaFormComponent implements OnInit {
     0,
     '',
     'Fail',
-    0,
     0,
     0,
     0,
@@ -43,7 +42,7 @@ export class CazanaFormComponent implements OnInit {
   newCazana() {
     this.model = new Cazana(
       42,
-      'Bloggs',
+      '123456789',
       'ford',
       'focus',
       '',
@@ -54,7 +53,6 @@ export class CazanaFormComponent implements OnInit {
       0,
       '',
       'Fail',
-      0,
       0,
       0,
       0,
@@ -116,6 +114,20 @@ export class CazanaFormComponent implements OnInit {
 
     var motAveMileage: number = (this.model.mileageMot / motMonths) * 12;
     this.model.averageMotMileage = Math.round(motAveMileage);
+
+    var vrmDate = this.model.dateOfChange.split('/');
+    var vrmMonth = vrmDate[0];
+    var vrmYear = vrmDate[1];
+    var vrmChangeYear: number = parseInt(vrmYear);
+    console.log('vrm change Year is ', vrmChangeYear);
+    var additionalVrmMonths: number = parseInt(vrmMonth);
+    var vrmMonths: number =
+      (vrmChangeYear - registrationYear) * 12 +
+      (additionalVrmMonths - registrationMonths);
+    this.model.durationFromRegVrm = vrmMonths;
+
+    var vrmAveMileage: number = (this.model.mileageVrm / vrmMonths) * 12;
+    this.model.averageVrmMileage = Math.round(vrmAveMileage);
   }
 
   calculateMileage() {
