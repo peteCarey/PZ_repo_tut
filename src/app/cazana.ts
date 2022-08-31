@@ -9,12 +9,18 @@ export class Cazana {
     public price: number,
     public mileageAdvertised: number,
     public durationFromReg: number,
-    public averageMileage: number,
+    public averageAdMileage: number,
     public dateOfMot: string,
     public result: string,
     public mileageMot: number,
+    public durationFromRegMot: number,
+    public mileageMotAdvertised: number,
+    public averageMotMileage: number,
     public dateOfChange: string,
     public fromVRM: string,
-    public toVRM: string
+    public toVRM: string,
+    public durationFromRegVrm: number,
+    public mileageVrmAdvertised: number,
+    public averageVrmMileage: number
   ) {}
 }

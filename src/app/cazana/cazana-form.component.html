@@ -67,28 +67,36 @@
 
       <div class="form-group">
         <div class="col-xs-6">
-          <label for="registrationDate">Date of Registration (MMYYYY)</label>
+          <label for="registrationDate">Date of Registration (MM/YYYY)</label>
           <input
             type="text"
             class="form-control"
-            id="model"
+            id="registrationDate"
+            required
             [(ngModel)]="model.registrationDate"
             name="registrationDate"
+            #registrationDate="ngModel"
           />
+          <div
+            [hidden]="registrationDate.valid || registrationDate.pristine"
+            class="alert alert-danger"
+          >
+            Registration Date is required
+          </div>
         </div>
       </div>
 
       <h2 class="smallLineHeight">Advertised for sale:</h2>
       <div class="form-group">
         <div class="col-xs-3">
-          <label for="dateAdvertised">Date(MMYYYY):</label>
+          <label for="dateAdvertised">Date(MM/YYYY):</label>
           <input
             type="text"
             class="form-control"
             id="dateAdvertised"
             [(ngModel)]="model.dateAdvertised"
             name="dateAdvertised"
-            onchange="getDuration('dateAdvertised', 'regnDate',  'duration')"
+            (change)="getDuration(model.dateAdvertised, 'Advertised')"
           />
         </div>
       </div>
@@ -102,7 +110,6 @@
             id="price"
             [(ngModel)]="model.price"
             name="price"
-            onchange="calculateMileage(this.value,'aveMileage')"
           />
         </div>
       </div>
@@ -116,13 +123,14 @@
             id="mileageAdvertised"
             [(ngModel)]="model.mileageAdvertised"
             name="mileageAdvertised"
+            (onchange)="calculateMileage()"
           />
         </div>
       </div>
 
       <div class="form-group">
         <div class="col-xs-3">
-          <label for="durationFromReg">Duration from Reg</label>
+          <label for="durationFromReg">Duration from Reg(Months)</label>
           <input
             type="text"
             class="form-control"
@@ -139,9 +147,9 @@
           <input
             type="text"
             class="form-control"
-            id="averageMileage"
-            [(ngModel)]="model.averageMileage"
-            name="averageMileage"
+            id="averageAdMileage"
+            [(ngModel)]="model.averageAdMileage"
+            name="averageAdMileage"
           />
         </div>
       </div>
@@ -157,7 +165,7 @@
             id="dateOfMot"
             [(ngModel)]="model.dateOfMot"
             name="dateOfMot"
-            onchange="getDuration('dateOfMot', 'regnDate',  'duration')"
+            (onchange)="getDuration(model.dateOfMot, 'MOT')"
           />
         </div>
       </div>
@@ -171,7 +179,6 @@
             id="result"
             [(ngModel)]="model.result"
             name="result"
-            onchange="calculateMileage(this.value,'aveMileage')"
           />
         </div>
       </div>
@@ -185,19 +192,20 @@
             id="mileageMot"
             [(ngModel)]="model.mileageMot"
             name="mileageMot"
+            (onchange)="calculateMileage()"
           />
         </div>
       </div>
 
       <div class="form-group">
         <div class="col-xs-3">
-          <label for="durationFromReg">Duration from Reg</label>
+          <label for="durationFromReg">Duration from Reg(Months)</label>
           <input
             type="text"
             class="form-control"
-            id="durationFromReg"
-            [(ngModel)]="model.durationFromReg"
-            name="durationFromReg"
+            id="durationFromRegMot"
+            [(ngModel)]="model.durationFromRegMot"
+            name="durationFromRegMot"
           />
         </div>
       </div>
@@ -208,9 +216,9 @@
           <input
             type="text"
             class="form-control"
-            id="averageMileage"
-            [(ngModel)]="model.averageMileage"
-            name="averageMileage"
+            id="averageMotMileage"
+            [(ngModel)]="model.averageMotMileage"
+            name="averageMotMileage"
           />
         </div>
       </div>
@@ -226,7 +234,7 @@
             id="dateAdvertised"
             [(ngModel)]="model.dateOfChange"
             name="dateOfChange"
-            onchange="getDuration('dateOfChange', 'regnDate',  'duration')"
+            (onchange)="getDuration(model.dateOfChange, 'VRM')"
           />
         </div>
       </div>
@@ -240,7 +248,6 @@
             id="vrm"
             [(ngModel)]="model.vrm"
             name="vrm"
-            onchange="calculateMileage(this.value,'aveMileage')"
           />
         </div>
       </div>
@@ -264,9 +271,9 @@
           <input
             type="text"
             class="form-control"
-            id="durationFromReg"
-            [(ngModel)]="model.durationFromReg"
-            name="durationFromReg"
+            id="durationFromRegVrm"
+            [(ngModel)]="model.durationFromRegVrm"
+            name="durationFromRegVrm"
           />
         </div>
       </div>
@@ -277,9 +284,9 @@
           <input
             type="text"
             class="form-control"
-            id="averageMileage"
-            [(ngModel)]="model.averageMileage"
-            name="averageMileage"
+            id="averageVrmMileage"
+            [(ngModel)]="model.averageVrmMileage"
+            name="averageVrmMileage"
           />
         </div>
       </div>
