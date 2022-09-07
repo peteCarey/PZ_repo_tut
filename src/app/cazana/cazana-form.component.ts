@@ -18,19 +18,19 @@ export class CazanaFormComponent implements OnInit {
     '',
     '',
     0,
-    0,
+    '',
     0,
     0,
     '',
     'Fail',
-    0,
+    '',
     0,
     0,
     '',
     '',
     '',
     0,
-    0,
+    '',
     0
   );
   submitted = false;
@@ -48,88 +48,97 @@ export class CazanaFormComponent implements OnInit {
       '',
       '',
       0,
-      0,
+      '',
       0,
       0,
       '',
       'Fail',
-      0,
+      '',
       0,
       0,
       '',
       '',
       '',
       0,
-      0,
+      '',
       0
     );
   }
 
-  getDuration(value: any, whichDate: string) {
-    console.log(value);
+  getDuration() {
+    //console.log(value);
 
     // If (value = "MOT"){}
-
-    var registrationDate = this.model.registrationDate;
-    var regDate = registrationDate.split('/');
-    var regMonth = regDate[0];
-    var regYear = regDate[1];
-    var registrationYear: number = parseInt(regYear);
-    var registrationMonths: number = parseInt(regMonth);
-
-    console.log(this.model.registrationDate);
-    var advertDate = value;
-    var adDate = advertDate.split('/');
-    var adMonth = adDate[0];
-    var adYear = adDate[1];
-    var advertYear: number = parseInt(adYear);
-    var advertMonths: number = parseInt(adMonth);
-
-    console.log(adMonth);
-    console.log(adYear);
     debugger;
-    var motDate = this.model.dateOfMot.split('/');
-    var motMonth = motDate[0];
-    var motYear = motDate[1];
-    var motorTaxYear: number = parseInt(motYear);
-    console.log('motorTaxYear is ', motorTaxYear);
-    var additionalMotMonths: number = parseInt(motMonth);
+    // registration
+    let registrationDate = this.model.registrationDate;
+    let regDate = registrationDate.split('/');
+    let regMonth = regDate[0];
+    let regYear = regDate[1];
+    let registrationYear: number = parseInt(regYear);
+    let registrationMonths: number = parseInt(regMonth);
+    console.log(this.model.registrationDate);
 
-    var durMonths: number =
+    // Advertised
+    let advertDate = this.model.dateAdvertised;
+    let adDate = advertDate.split('/');
+    let adMonth = adDate[0];
+    let adYear = adDate[1];
+    let advertYear: number = parseInt(adYear);
+    let advertMonths: number = parseInt(adMonth);
+    console.log((advertYear - registrationYear) * 12);
+    console.log(advertMonths - registrationMonths);
+    let durMonths: number =
       (advertYear - registrationYear) * 12 +
       (advertMonths - registrationMonths);
-    var motMonths: number =
-      (motorTaxYear - registrationYear) * 12 +
-      (additionalMotMonths - registrationMonths);
-    // up to here
-    console.log('mot months is ' + motMonths);
+    console.log(durMonths);
+
+    console.log(advertYear - registrationYear);
+    let adAveMileage: number =
+      (Number(this.model.mileageAdvertised) * 12) / durMonths;
+    this.model.averageAdMileage = Math.round(adAveMileage);
     console.log('durMonths is ' + durMonths);
     this.model.durationFromReg = durMonths;
-    this.model.durationFromRegMot = motMonths;
+
+    // MOT
+
+    let motDate = this.model.dateOfMot.split('/');
+    let motMonth = motDate[0];
+    let motYear = motDate[1];
+    let motorTaxYear: number = parseInt(motYear);
+    console.log('motorTaxYear is ', motorTaxYear);
+    let motMonths: number = parseInt(motMonth);
+    let motDurMonths: number =
+      (motorTaxYear - registrationYear) * 12 + (motMonths - registrationMonths);
+    console.log('mot months is ' + motMonths);
+    this.model.durationFromRegMot = motDurMonths;
+
     console.log(this.model.mileageMot);
-
-    var adAveMileage: number = (this.model.mileageAdvertised / durMonths) * 12;
-    console.log(typeof adAveMileage);
-    this.model.averageAdMileage = Math.round(adAveMileage);
-
-    var motAveMileage: number = (this.model.mileageMot / motMonths) * 12;
+    // if (typeof this.model.mileageMot === 'number') {
+    let motAveMileage: number =
+      (Number(this.model.mileageMot) * 12) / motDurMonths;
     this.model.averageMotMileage = Math.round(motAveMileage);
+    //  }
 
-    var vrmDate = this.model.dateOfChange.split('/');
-    var vrmMonth = vrmDate[0];
-    var vrmYear = vrmDate[1];
-    var vrmChangeYear: number = parseInt(vrmYear);
+    // VRM
+    let vrmDate = this.model.dateOfChange.split('/');
+    let vrmMonth = vrmDate[0];
+    let vrmYear = vrmDate[1];
+    let vrmChangeYear: number = parseInt(vrmYear);
     console.log('vrm change Year is ', vrmChangeYear);
-    var additionalVrmMonths: number = parseInt(vrmMonth);
-    var vrmMonths: number =
+
+    let vrmMonths: number = parseInt(vrmMonth);
+    let vrmDurMonths: number =
       (vrmChangeYear - registrationYear) * 12 +
-      (additionalVrmMonths - registrationMonths);
-    this.model.durationFromRegVrm = vrmMonths;
-
-    var vrmAveMileage: number = (this.model.mileageVrm / vrmMonths) * 12;
+      (vrmMonths - registrationMonths);
+    this.model.durationFromRegVrm = vrmDurMonths;
+    debugger;
+    //   if (typeof this.model.mileageVrm === 'number') {
+    let vrmAveMileage: number =
+      (Number(this.model.mileageVrm) * 12) / vrmDurMonths;
     this.model.averageVrmMileage = Math.round(vrmAveMileage);
+    //  }
   }
-
   calculateMileage() {
     console.log(this.model.mileageMot);
   }

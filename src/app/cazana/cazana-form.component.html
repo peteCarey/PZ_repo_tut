@@ -1,4 +1,7 @@
 <p>cazana works!</p>
+<div class="container text-center mt-5 mb-5">
+  <h1>Bootstrap 5 is working fine with Angular 13!!</h1>
+</div>
 <div class="container">
   <div [hidden]="submitted">
     <form (ngSubmit)="onSubmit()" #cazanaForm="ngForm">
@@ -96,7 +99,7 @@
             id="dateAdvertised"
             [(ngModel)]="model.dateAdvertised"
             name="dateAdvertised"
-            (change)="getDuration(model.dateAdvertised, 'Advertised')"
+            (change)="getDuration()"
           />
         </div>
       </div>
@@ -116,15 +119,23 @@
 
       <div class="form-group">
         <div class="col-xs-2">
-          <label for="mileage">Mileage</label>
+          <label for="mileageAdvertised">Mileage</label>
           <input
             type="text"
             class="form-control"
             id="mileageAdvertised"
+            required
             [(ngModel)]="model.mileageAdvertised"
             name="mileageAdvertised"
+            #mileageAdvertised="ngModel"
             (onchange)="calculateMileage()"
           />
+          <div
+            [hidden]="mileageAdvertised.valid || mileageAdvertised.pristine"
+            class="alert alert-danger"
+          >
+            Mileage is required
+          </div>
         </div>
       </div>
 
@@ -165,7 +176,7 @@
             id="dateOfMot"
             [(ngModel)]="model.dateOfMot"
             name="dateOfMot"
-            (onchange)="getDuration(model.dateOfMot, 'MOT')"
+            (onchange)="getDuration()"
           />
         </div>
       </div>
@@ -185,15 +196,23 @@
 
       <div class="form-group">
         <div class="col-xs-2">
-          <label for="mileage">Mileage</label>
+          <label for="mileageMot">Mileage</label>
           <input
             type="text"
             class="form-control"
             id="mileageMot"
+            required
             [(ngModel)]="model.mileageMot"
             name="mileageMot"
+            #mileageMot="ngModel"
             (onchange)="calculateMileage()"
           />
+          <div
+            [hidden]="mileageMot.valid || mileageMot.pristine"
+            class="alert alert-danger"
+          >
+            Mileage is required
+          </div>
         </div>
       </div>
 
@@ -234,7 +253,7 @@
             id="dateAdvertised"
             [(ngModel)]="model.dateOfChange"
             name="dateOfChange"
-            (onchange)="getDuration(model.dateOfChange, 'VRM')"
+            (onchange)="getDuration()"
           />
         </div>
       </div>
@@ -267,15 +286,23 @@
 
       <div class="form-group">
         <div class="col-xs-2">
-          <label for="mileage">Mileage</label>
+          <label for="mileageVrm">Mileage</label>
           <input
             type="text"
             class="form-control"
             id="mileageVrm"
+            required
             [(ngModel)]="model.mileageVrm"
             name="mileageVrm"
+            #mileageVrm="ngModel"
             (onchange)="calculateMileage()"
           />
+          <div
+            [hidden]="mileageVrm.valid || mileageVrm.pristine"
+            class="alert alert-danger"
+          >
+            Mileage is required
+          </div>
         </div>
       </div>
 
