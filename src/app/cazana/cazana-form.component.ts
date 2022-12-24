@@ -66,10 +66,7 @@ export class CazanaFormComponent implements OnInit {
   }
 
   getDuration() {
-    //console.log(value);
-
-    // If (value = "MOT"){}
-    debugger;
+    console.log('test');
     // registration
     let registrationDate = this.model.registrationDate;
     let regDate = registrationDate.split('/');
@@ -88,7 +85,7 @@ export class CazanaFormComponent implements OnInit {
     let advertMonths: number = parseInt(adMonth);
     console.log((advertYear - registrationYear) * 12);
     console.log(advertMonths - registrationMonths);
-    let durMonths: number =
+    let durMonths: string | number =
       (advertYear - registrationYear) * 12 +
       (advertMonths - registrationMonths);
     console.log(durMonths);
@@ -97,9 +94,13 @@ export class CazanaFormComponent implements OnInit {
     let adAveMileage: number =
       (Number(this.model.mileageAdvertised) * 12) / durMonths;
     this.model.averageAdMileage = Math.round(adAveMileage);
-    console.log('durMonths is ' + durMonths);
-    this.model.durationFromReg = durMonths;
-
+    console.log('durMonths is ' + typeof durMonths);
+    debugger;
+    if (durMonths === NaN) {
+      durMonths = '';
+    } else {
+      this.model.durationFromReg = durMonths;
+    }
     // MOT
 
     let motDate = this.model.dateOfMot.split('/');
@@ -120,23 +121,22 @@ export class CazanaFormComponent implements OnInit {
     this.model.averageMotMileage = Math.round(motAveMileage);
     //  }
 
-    // VRM
-    let vrmDate = this.model.dateOfChange.split('/');
-    let vrmMonth = vrmDate[0];
-    let vrmYear = vrmDate[1];
-    let vrmChangeYear: number = parseInt(vrmYear);
-    console.log('vrm change Year is ', vrmChangeYear);
+    // VRN Vehicle Registration Number (plate)
+    let vrnDate = this.model.dateOfChange.split('/');
+    let vrnMonth = vrnDate[0];
+    let vrnYear = vrnDate[1];
+    let vrnChangeYear: number = parseInt(vrnYear);
+    console.log('vrn change Year is ', vrnChangeYear);
 
-    let vrmMonths: number = parseInt(vrmMonth);
-    let vrmDurMonths: number =
-      (vrmChangeYear - registrationYear) * 12 +
-      (vrmMonths - registrationMonths);
-    this.model.durationFromRegVrm = vrmDurMonths;
-    debugger;
-    //   if (typeof this.model.mileageVrm === 'number') {
-    let vrmAveMileage: number =
-      (Number(this.model.mileageVrm) * 12) / vrmDurMonths;
-    this.model.averageVrmMileage = Math.round(vrmAveMileage);
+    let vrnMonths: number = parseInt(vrnMonth);
+    let vrnDurMonths: number =
+      (vrnChangeYear - registrationYear) * 12 +
+      (vrnMonths - registrationMonths);
+    this.model.durationFromRegVrn = vrnDurMonths;
+    //   if (typeof this.model.mileagevrn === 'number') {
+    let vrnAveMileage: number =
+      (Number(this.model.mileageVrn) * 12) / vrnDurMonths;
+    this.model.averageVrnMileage = Math.round(vrnAveMileage);
     //  }
   }
   calculateMileage() {

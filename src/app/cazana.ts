@@ -1,14 +1,14 @@
 export class Cazana {
   constructor(
     public id: number,
-    public vrm: string,
+    public vrn: string,
     public make: string,
     public model: string,
     public registrationDate: string,
     public dateAdvertised: string,
     public price: number,
     public mileageAdvertised: string | number,
-    public durationFromReg: number,
+    public durationFromReg: string | number,
     public averageAdMileage: number,
     public dateOfMot: string,
     public result: string,
@@ -16,10 +16,10 @@ export class Cazana {
     public durationFromRegMot: number,
     public averageMotMileage: number,
     public dateOfChange: string,
-    public fromVRM: string,
-    public toVRM: string,
-    public durationFromRegVrm: number,
-    public mileageVrm: string | number,
-    public averageVrmMileage: number
+    public fromVRN: string,
+    public toVRN: string,
+    public durationFromRegVrn: number,
+    public mileageVrn: string | number,
+    public averageVrnMileage: number
   ) {}
 }
