@@ -1,3 +1,44 @@
 .form-control {
   font-size: 14px;
 }
+
+/* The buttons that are used to open and close the accordion panel */
+.accordion {
+  background-color: #ffffff;
+  color: #000000;
+  cursor: pointer;
+  padding: 1rem;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  font-weight: bold;
+}
+
+/* the background color to the button if it is clicked on, and when you move the mouse over it (hover) */
+.active,
+.accordion:hover {
+  background-color: #ccc;
+  background-color: lightblue;
+}
+
+.accordion:after {
+  content: "\02795"; /* Unicode character for "plus" sign (+) */
+  /* src: "./assets/plus-icon.svg";color: #777; */
+  font-size: 13px;
+  background-color: #ffd300;
+  color: #1b1d1b;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+/*
+.questionNumber {
+  padding-right: 3rem;
+  font-weight: bold;
+}
+*/

@@ -1,30 +1,28 @@
-import {
-  Component,
-  OnInit,
-  ElementRef,
-  ViewChild,
-  ViewChildren,
-  QueryList,
-} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Cazana } from '../cazana';
 
 @Component({
-  selector: 'app-cazana-form',
-  templateUrl: './cazana-form.component.html',
-  styleUrls: ['./cazana-form.component.scss'],
+  selector: 'advertised-for-sale',
+  templateUrl: './advertised-for-sale.component.html',
 })
-export class CazanaFormComponent implements OnInit {
-  @ViewChildren('el', { read: ElementRef }) el!: QueryList<ElementRef>;
-  isShow = false;
+export class AdvertisedForSaleComponent {
+  @Input() event: any;
+  someProperty: any = 'some value';
+
+  logFoo() {
+    console.log('foo');
+  }
+  @Output() eventClick = new EventEmitter();
+
+  event1 = {
+    id: 1,
+    name: 'red tibetan',
+  };
 
   id: number = 1;
   price: number = 0;
   durationFromReg: number = 0;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   model = new Cazana(
     this.id,
@@ -50,41 +48,10 @@ export class CazanaFormComponent implements OnInit {
     0
   );
 
-  submitted = false;
-
-  onSubmit() {
-    this.submitted = true;
-  }
-
-  newCazana() {
-    this.model = new Cazana(
-      42,
-      '123456789',
-      'ford',
-      'focus',
-      '',
-      '',
-      0,
-      '',
-      0,
-      0,
-      '',
-      'Fail',
-      '',
-      0,
-      0,
-      '',
-      '',
-      '',
-      0,
-      '',
-      0
-    );
-  }
-
   toggle() {
-    console.log(this.isShow);
-    this.isShow = !this.isShow;
+    console.log('clicked');
+    this.eventClick.emit('foo');
+    //this.isShow = !this.isShow;
     // this.el.toArray()[i].nativeElement.classList.toggle('active');
     // const panel = this.el.toArray()[i].nativeElement.nextElementSibling;
   }
@@ -162,8 +129,5 @@ export class CazanaFormComponent implements OnInit {
       (Number(this.model.mileageVrn) * 12) / vrnDurMonths;
     this.model.averageVrnMileage = Math.round(vrnAveMileage);
     //  }
-  }
-  calculateMileage() {
-    console.log(this.model.mileageMot);
   }
 }

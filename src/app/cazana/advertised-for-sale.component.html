@@ -1,0 +1,83 @@
+<div>
+  <h1>Hello {{ event1.name }}</h1>
+</div>
+
+<h2 class="smallLineHeight">Advertised for sale:</h2>
+
+<div style="background-color: pink">
+  <div class="form-group">
+    <label for="dateAdvertised">Date(MM/YYYY):</label>
+    <input
+      type="text"
+      class="form-control"
+      id="dateAdvertised"
+      required
+      [(ngModel)]="model.dateAdvertised"
+      name="dateAdvertised"
+      #dateAdvertised="ngModel"
+      (change)="getDuration()"
+    />
+    <div
+      [hidden]="dateAdvertised.valid || dateAdvertised.pristine"
+      class="alert alert-danger"
+    >
+      Date Advertised is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="price">Price:</label>
+    <input
+      type="text"
+      class="form-control"
+      id="price"
+      [(ngModel)]="model.price"
+      name="price"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="mileageAdvertised">Mileage</label>
+    <input
+      type="text"
+      class="form-control"
+      id="mileageAdvertised"
+      required
+      [(ngModel)]="model.mileageAdvertised"
+      name="mileageAdvertised"
+      #mileageAdvertised="ngModel"
+      (change)="getDuration()"
+    />
+    <div
+      [hidden]="mileageAdvertised.valid || mileageAdvertised.pristine"
+      class="alert alert-danger"
+    >
+      Mileage is required
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="durationFromReg">Duration from Reg(Months)</label>
+    <input
+      type="text"
+      class="form-control"
+      id="durationFromReg"
+      [(ngModel)]="model.durationFromReg"
+      name="durationFromReg"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="averageMileage">Average Mileage</label>
+    <input
+      type="text"
+      class="form-control"
+      id="averageAdMileage"
+      [(ngModel)]="model.averageAdMileage"
+      name="averageAdMileage"
+    />
+  </div>
+</div>
+<div>
+  <button #el class="accordion" (click)="toggle()">Click Me</button>
+</div>

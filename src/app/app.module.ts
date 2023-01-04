@@ -6,9 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CazanaFormComponent } from './cazana/cazana-form.component';
+import { AdvertisedForSaleComponent } from './cazana/advertised-for-sale.component';
 
 @NgModule({
-  declarations: [AppComponent, CazanaFormComponent],
+  declarations: [AppComponent, CazanaFormComponent, AdvertisedForSaleComponent],
   imports: [BrowserModule, CommonModule, FormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
