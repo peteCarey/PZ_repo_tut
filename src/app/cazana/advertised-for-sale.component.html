@@ -3,9 +3,12 @@
 </div>
 
 <h2 class="smallLineHeight">Advertised for sale:</h2>
+<div>
+  <button #el class="accordion" (click)="toggleBtn()">Show</button>
+</div>
 
-<div style="background-color: pink">
-  <div class="form-group">
+<div style="background-color: pink" [hidden]="true">
+  <div class="form-group" [hidden]>
     <label for="dateAdvertised">Date(MM/YYYY):</label>
     <input
       type="text"
@@ -79,5 +82,5 @@
   </div>
 </div>
 <div>
-  <button #el class="accordion" (click)="toggle()">Click Me</button>
+  <button #el class="accordion" (click)="toggle($event)">Click Me</button>
 </div>

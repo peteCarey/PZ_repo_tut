@@ -15,6 +15,15 @@ import { Cazana } from '../cazana';
   styleUrls: ['./cazana-form.component.scss'],
 })
 export class CazanaFormComponent implements OnInit {
+  title = 'Vehicle Mileage Estimator';
+  /*
+  event1 = {
+    id: 1,
+    name: 'green tibetan',
+  };
+  */
+  event1: any;
+
   @ViewChildren('el', { read: ElementRef }) el!: QueryList<ElementRef>;
   isShow = false;
 
@@ -52,8 +61,9 @@ export class CazanaFormComponent implements OnInit {
 
   submitted = false;
 
-  onSubmit() {
+  onSubmit(formValues: any) {
     this.submitted = true;
+    console.log(formValues);
   }
 
   newCazana() {
@@ -82,9 +92,10 @@ export class CazanaFormComponent implements OnInit {
     );
   }
 
-  toggle() {
-    console.log(this.isShow);
-    this.isShow = !this.isShow;
+  toggle(data: any) {
+    console.log('received1:', data);
+    //this.eventClick.emit('foo');
+    // this.isShow = !this.isShow;
     // this.el.toArray()[i].nativeElement.classList.toggle('active');
     // const panel = this.el.toArray()[i].nativeElement.nextElementSibling;
   }

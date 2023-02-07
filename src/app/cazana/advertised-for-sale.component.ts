@@ -18,11 +18,25 @@ export class AdvertisedForSaleComponent {
   event1 = {
     id: 1,
     name: 'red tibetan',
+    team: 'lfc',
   };
 
   id: number = 1;
   price: number = 0;
   durationFromReg: number = 0;
+
+  toggle(data: any) {
+    console.log('received:', data);
+    this.eventClick.emit(this.event1.name);
+    //[hidden] = "false";
+    //this.isShow = !this.isShow;
+    // this.el.toArray()[i].nativeElement.classList.toggle('active');
+    // const panel = this.el.toArray()[i].nativeElement.nextElementSibling;
+  }
+
+  toggleBtn(){
+    
+  }
 
   model = new Cazana(
     this.id,
@@ -47,14 +61,6 @@ export class AdvertisedForSaleComponent {
     '',
     0
   );
-
-  toggle() {
-    console.log('clicked');
-    this.eventClick.emit('foo');
-    //this.isShow = !this.isShow;
-    // this.el.toArray()[i].nativeElement.classList.toggle('active');
-    // const panel = this.el.toArray()[i].nativeElement.nextElementSibling;
-  }
 
   getDuration() {
     console.log('test');
