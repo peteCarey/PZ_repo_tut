@@ -4,10 +4,11 @@
 
 <h2 class="smallLineHeight">Advertised for sale:</h2>
 <div>
-  <button #el class="accordion" (click)="toggleBtn()">Show</button>
+  <button class="accordion" (click)="toggleBtn()">Show</button>
 </div>
 
-<div style="background-color: pink" [hidden]="true">
+<!--div style="background-color: pink" [hidden]="true"-->
+<div #el style="background-color: pink" [hidden]="false">
   <div class="form-group" [hidden]>
     <label for="dateAdvertised">Date(MM/YYYY):</label>
     <input

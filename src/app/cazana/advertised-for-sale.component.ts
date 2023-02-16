@@ -1,4 +1,12 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChildren,
+  ElementRef,
+  QueryList,
+} from '@angular/core';
 
 import { Cazana } from '../cazana';
 
@@ -8,6 +16,8 @@ import { Cazana } from '../cazana';
 })
 export class AdvertisedForSaleComponent {
   @Input() event: any;
+  @ViewChildren('thumbnail', { read: ElementRef })
+  thumbnail!: QueryList<ElementRef>;
   someProperty: any = 'some value';
 
   logFoo() {
@@ -34,8 +44,8 @@ export class AdvertisedForSaleComponent {
     // const panel = this.el.toArray()[i].nativeElement.nextElementSibling;
   }
 
-  toggleBtn(){
-    
+  toggleBtn() {
+    console.log(this.thumbnail.toArray());
   }
 
   model = new Cazana(

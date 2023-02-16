@@ -1,6 +1,7 @@
 <div class="container">
   <div [hidden]="submitted">
-    <form #cazanaForm="ngForm" (ngSubmit)="onSubmit(cazanaForm.value)">
+    <!-- form #cazanaForm="ngForm" (ngSubmit)="onSubmit(cazanaForm.value)" -->
+    <form #cazanaForm="ngForm">
       <h1>{{ title }}</h1>
       {{ model | json }}
 
@@ -85,9 +86,9 @@
         </div>
       </div>
       <hr />
-      <!--  <h2 class="smallLineHeight">Advertised for sale:</h2>-->
 
-      <advertised-for-sale
+      <!--h2 class="smallLineHeight">Advertised for sale:</h2>
+        <advertised-for-sale
         #thumbnail
         [event]="event1"
         (eventClick)="toggle($event)"
@@ -95,27 +96,29 @@
       <h3>{{ thumbnail.someProperty }}</h3>
       <button class="btn btn-primary" (click)="thumbnail.logFoo()">
         Log me some foo
+      </button>-->
+
+      <button #el class="accordion" (click)="toggle(0)">
+        Advertised for sale:
       </button>
 
-      <!--  <div [hidden]="isShow" style="background-color: pink">
-        <div class="form-group">
-          <label for="dateAdvertised">Date(MM/YYYY):</label>
-          <input
-            type="text"
-            class="form-control"
-            id="dateAdvertised"
-            required
-            [(ngModel)]="model.dateAdvertised"
-            name="dateAdvertised"
-            #dateAdvertised="ngModel"
-            (change)="getDuration()"
-          />
-          <div
-            [hidden]="dateAdvertised.valid || dateAdvertised.pristine"
-            class="alert alert-danger"
-          >
-            Date Advertised is required
-          </div>
+      <div class="form-group" style="display: none">
+        <label for="dateAdvertised">Date(MM/YYYY):</label>
+        <input
+          type="text"
+          class="form-control"
+          id="dateAdvertised"
+          required
+          [(ngModel)]="model.dateAdvertised"
+          name="dateAdvertised"
+          #dateAdvertised="ngModel"
+          (change)="getDuration()"
+        />
+        <div
+          [hidden]="dateAdvertised.valid || dateAdvertised.pristine"
+          class="alert alert-danger"
+        >
+          Date Advertised is required
         </div>
 
         <div class="form-group">
@@ -171,14 +174,13 @@
           />
         </div>
       </div>
-      <div>
-        <button #el class="accordion" (click)="toggle()"></button>
-      </div>
-      -->
+      <!--  MOT test (roadworthy test):-->
 
-      <h2 class="smallLineHeight">MOT test (roadworthy test):</h2>
+      <button #el class="accordion" (click)="toggle(1)">
+        MOT test (roadworthy test):
+      </button>
 
-      <div class="form-group">
+      <div class="form-group" style="display: none; background-color: lime">
         <label for="dateOfMot">Date(MM/YYYY):</label>
         <input
           type="text"
@@ -196,72 +198,73 @@
         >
           Date of Mot is required
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="result">Result:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="result"
-          required
-          [(ngModel)]="model.result"
-          name="result"
-          #result="ngModel"
-        />
-        <div
-          [hidden]="result.valid || result.pristine"
-          class="alert alert-danger"
-        >
-          Result is required
+        <div class="form-group">
+          <label for="result">Result:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="result"
+            required
+            [(ngModel)]="model.result"
+            name="result"
+            #result="ngModel"
+          />
+          <div
+            [hidden]="result.valid || result.pristine"
+            class="alert alert-danger"
+          >
+            Result is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="mileageMot">Mileage</label>
+          <input
+            type="text"
+            class="form-control"
+            id="mileageMot"
+            required
+            [(ngModel)]="model.mileageMot"
+            name="mileageMot"
+            #mileageMot="ngModel"
+            (change)="getDuration()"
+          />
+          <div
+            [hidden]="mileageMot.valid || mileageMot.pristine"
+            class="alert alert-danger"
+          >
+            Mileage is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="durationFromReg">Duration from Reg(Months)</label>
+          <input
+            type="text"
+            class="form-control"
+            id="durationFromRegMot"
+            [(ngModel)]="model.durationFromRegMot"
+            name="durationFromRegMot"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="averageMileage">Average Mileage</label>
+          <input
+            type="text"
+            class="form-control"
+            id="averageMotMileage"
+            [(ngModel)]="model.averageMotMileage"
+            name="averageMotMileage"
+          />
         </div>
       </div>
+      <!--Change of VRN:-->
 
-      <div class="form-group">
-        <label for="mileageMot">Mileage</label>
-        <input
-          type="text"
-          class="form-control"
-          id="mileageMot"
-          required
-          [(ngModel)]="model.mileageMot"
-          name="mileageMot"
-          #mileageMot="ngModel"
-          (change)="getDuration()"
-        />
-        <div
-          [hidden]="mileageMot.valid || mileageMot.pristine"
-          class="alert alert-danger"
-        >
-          Mileage is required
-        </div>
-      </div>
+      <button #el class="accordion" (click)="toggle(2)">Change of VRN:</button>
 
-      <div class="form-group">
-        <label for="durationFromReg">Duration from Reg(Months)</label>
-        <input
-          type="text"
-          class="form-control"
-          id="durationFromRegMot"
-          [(ngModel)]="model.durationFromRegMot"
-          name="durationFromRegMot"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="averageMileage">Average Mileage</label>
-        <input
-          type="text"
-          class="form-control"
-          id="averageMotMileage"
-          [(ngModel)]="model.averageMotMileage"
-          name="averageMotMileage"
-        />
-      </div>
-
-      <h2 class="smallLineHeight">Change of VRN:</h2>
-
-      <div class="form-row" style="display: block">
+      <div class="form-group" style="display: none; background-color: lime">
         <div class="form-group">
           <label for="dateOfChange">Date(MM/YYYY):</label>
           <input

@@ -7,6 +7,10 @@
   margin-top: 0rem;
 }
 
+li > a.active {
+  color: #f97924;
+}
+
 @media (max-width: 1200px) {
   #searchForm {
     display: none;

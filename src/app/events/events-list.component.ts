@@ -18,6 +18,9 @@ export class EventsListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.events = this.cazanaService.getEvents();
+    // this.events = this.cazanaService.getEvents();
+    // this.cazanaService.getEvents().subscribe((events) => {
+    // this.events = events;
+    this.events = this.route.snapshot.data['events'];
   }
 }

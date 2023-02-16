@@ -1,6 +1,7 @@
 import {
   Component,
   OnInit,
+  Renderer2,
   ElementRef,
   ViewChild,
   ViewChildren,
@@ -24,16 +25,24 @@ export class CazanaFormComponent implements OnInit {
   */
   event1: any;
 
-  @ViewChildren('el', { read: ElementRef }) el!: QueryList<ElementRef>;
-  isShow = false;
+  //@ViewChild('el', { static: false }) el!: ElementRef; // works
 
+  @ViewChildren('el', { read: ElementRef }) el!: QueryList<ElementRef>;
+
+  i!: number;
   id: number = 1;
   price: number = 0;
   durationFromReg: number = 0;
 
-  constructor() {}
+  constructor(private renderer: Renderer2) {}
 
   ngOnInit(): void {}
+
+  ngAfterViewInit() {
+    const x = document.getElementsByTagName('button');
+    //console.log('Hello ', this.myButton.nativeElement);
+    console.log('Helloz ', x);
+  }
 
   model = new Cazana(
     this.id,
@@ -92,12 +101,16 @@ export class CazanaFormComponent implements OnInit {
     );
   }
 
-  toggle(data: any) {
-    console.log('received1:', data);
-    //this.eventClick.emit('foo');
-    // this.isShow = !this.isShow;
-    // this.el.toArray()[i].nativeElement.classList.toggle('active');
-    // const panel = this.el.toArray()[i].nativeElement.nextElementSibling;
+  toggle(i: number) {
+    console.log(this.el);
+    this.el.toArray()[i].nativeElement.classList.toggle('active');
+    const panel = this.el.toArray()[i].nativeElement.nextElementSibling;
+    console.log(panel);
+    if (panel.style.display === 'none') {
+      panel.style.display = 'inline';
+    } else {
+      panel.style.display = 'none';
+    }
   }
 
   getDuration() {
